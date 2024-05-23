@@ -65,7 +65,8 @@ export const hexToHsl = (hex: string) => {
   return {
     hue: h,
     saturation: s,
-    brightness: l
+    brightness: l,
+    temperature: 0
   };
 }
 
