@@ -10,7 +10,7 @@ export const TapoDevice = ({ send }: TapoProtocol) => {
         device_on: deviceOn,
       },
     };
-    await send(turnDeviceOnRequest);
+    return await send(turnDeviceOnRequest);
   };
 
   const augmentTapoDeviceInfo = (
@@ -43,7 +43,7 @@ export const TapoDevice = ({ send }: TapoProtocol) => {
       temperature?: number;
       colorTemp?: number;
     } = {}) => {
-      await send({
+      return await send({
         method: "set_device_info",
         params: {
           device_on: deviceOn,
@@ -51,7 +51,7 @@ export const TapoDevice = ({ send }: TapoProtocol) => {
           saturation: saturation,
           brightness: brightness,
           temperature: temperature,
-          colorTemp: colorTemp,
+          color_temp: colorTemp,
         },
       });
     },
@@ -63,7 +63,7 @@ export const TapoDevice = ({ send }: TapoProtocol) => {
           brightness: brightnessLevel,
         },
       };
-      await send(setBrightnessRequest);
+      return await send(setBrightnessRequest);
     },
 
     setColour: async (colour: string = "white") => {
@@ -73,7 +73,7 @@ export const TapoDevice = ({ send }: TapoProtocol) => {
         method: "set_device_info",
         params,
       };
-      await send(setColourRequest);
+      return await send(setColourRequest);
     },
 
     getDeviceInfo: async (): Promise<TapoDeviceInfo> => {
