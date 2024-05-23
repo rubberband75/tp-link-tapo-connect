@@ -33,14 +33,12 @@ export const TapoDevice = ({ send }: TapoProtocol) => {
       hue,
       saturation,
       brightness,
-      temperature,
       colorTemp,
     }: {
       deviceOn?: boolean;
       hue?: number;
       saturation?: number;
       brightness?: number;
-      temperature?: number;
       colorTemp?: number;
     } = {}) => {
       return await send({
@@ -50,7 +48,6 @@ export const TapoDevice = ({ send }: TapoProtocol) => {
           hue: hue,
           saturation: saturation,
           brightness: brightness,
-          temperature: temperature,
           color_temp: colorTemp,
         },
       });
